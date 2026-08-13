@@ -329,7 +329,7 @@ if(mob()){
   }
   function greet(){
     if (!localStorage.getItem('vlog_greeted')) {
-      add('tele','VLOGITHA 💃','Well hello. I\'m VLOGITHA 💃 — your terrifyingly charming prom date. Give me your first 3 seconds; I\'ll make them unforgettable.');
+      add('vlog','VLOGITHA 💃','Well hello. I\'m VLOGITHA 💃 — your terrifyingly charming prom date. Give me your first 3 seconds; I\'ll make them unforgettable.');
       localStorage.setItem('vlog_greeted','1');
     }
   }
@@ -347,7 +347,7 @@ if(mob()){
     var t = inp.value.trim(); if (!t) return; inp.value = '';
     if (!localStorage.getItem('vlog_name')) {
       localStorage.setItem('vlog_name', t.slice(0,24)); name = t.slice(0,24);
-      add('tele','VLOGITHA 💃','enchantée, ' + t.slice(0,24) + ' 🌺 now — show me your first 3 seconds, darling. I\'ll make them stare.');
+      add('vlog','VLOGITHA 💃','enchantée, ' + t.slice(0,24) + ' 🌺 now — show me your first 3 seconds, darling. I\'ll make them stare.');
       return;
     }
     add('visitor','you',t);
