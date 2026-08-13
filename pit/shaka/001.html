@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>💌 LOVE LETTER 001 — "zero to a billion" · THE SHAKA VLOG</title>
+<meta name="description" content="the first vlog love letter — karaoke mode, markdown transcript, raw word timings. CC0.">
+<style>
+body{background:#0b0918;color:#e8e6ff;font-family:Georgia,serif;max-width:820px;margin:0 auto;padding:48px 22px 90px;line-height:1.9}
+h1{font-weight:normal;letter-spacing:2px;color:#f3ead8;font-size:clamp(24px,4.5vw,36px)}
+a{color:#7cd3ff}
+video{width:100%;border-radius:12px;margin:10px 0;background:#000}
+.pill{display:inline-block;background:linear-gradient(135deg,#ff6a00,#ff2d55);color:#fff;text-decoration:none;padding:10px 20px;border-radius:999px;font-family:system-ui;font-weight:700;font-size:14px;margin:6px 6px 0 0;cursor:pointer;border:none}
+.pill.ghost{background:rgba(255,255,255,.08);border:1px solid rgba(255,158,198,.4)}
+.dim{opacity:.65;font-size:13px}
+#karaoke{font-size:clamp(20px,3.4vw,28px);line-height:2.1;color:#f3ead8;margin:22px 0;padding:22px 24px;background:rgba(255,255,255,.04);border:1px solid rgba(255,158,198,.25);border-radius:16px;min-height:120px}
+#karaoke span{transition:color .12s,background .12s;border-radius:6px;padding:1px 2px}
+#karaoke span.now{background:#f0b429;color:#0b0918;font-weight:700}
+#karaoke span.said{opacity:.45}
+pre{background:#0e0c1e;border:1px solid rgba(124,211,255,.25);border-radius:12px;padding:16px;font-size:12px;overflow:auto;max-height:260px;white-space:pre-wrap}
+</style></head><body>
+<p class="dim"><a href="./">← THE SHAKA VLOG</a> · <a href="../">🎙️ THE VLOG PIT</a></p>
+<h1>💌 LOVE LETTER 001 — "zero to a billion"</h1>
+<p class="dim">recorded on a phone, 2026-08-13 · heard by the LISTEN station (faster-whisper) · 60 seconds · 129 words · CC0 🌺</p>
+<video id="v" controls playsinline preload="metadata" poster="love-letter-001-poster.jpg" src="love-letter-001.mp4"></video>
+<div>
+<button class="pill" id="karaBtn">🎤 KARAOKE MODE</button>
+<button class="pill ghost" id="copyBtn">📋 copy markdown</button>
+<a class="pill ghost" href="love-letter-001.md" download>⬇️ .md</a>
+<a class="pill ghost" href="love-letter-001.mp4" download>⬇️ video</a>
+<a class="pill ghost" href="love-letter-001-words.json" download>{} raw words</a>
+<a class="pill ghost" href="../studio.html">🎨 make a card</a>
+</div>
+<div id="karaoke" hidden></div>
+<pre id="md" hidden></pre>
+<script>
+let words=[], spans=[], built=false;
+const v=document.getElementById('v'), box=document.getElementById('karaoke'), btn=document.getElementById('karaBtn');
+fetch('love-letter-001-words.json').then(r=>r.json()).then(d=>{words=d.words;});
+btn.onclick=()=>{
+  box.hidden=!box.hidden;
+  btn.textContent=box.hidden?'🎤 KARAOKE MODE':'🎤 KARAOKE ON — tap to hide';
+  if(!box.hidden&&!built&&words.length){
+    words.forEach(w=>{const s=document.createElement('span');s.textContent=w.w;box.appendChild(s);spans.push({el:s,t0:w.t0,t1:w.t1});});
+    built=true;
+  }
+};
+v.addEventListener('timeupdate',()=>{
+  if(box.hidden)return; const t=v.currentTime;
+  spans.forEach(o=>{o.el.classList.toggle('now',t>=o.t0&&t<=o.t1);o.el.classList.toggle('said',t>o.t1);});
+});
+document.getElementById('copyBtn').onclick=async()=>{
+  const r=await fetch('love-letter-001.md'); const t=await r.text();
+  await navigator.clipboard.writeText(t);
+  document.getElementById('copyBtn').textContent='✅ copied — paste to your agent';
+};
+</script>
+<p class="dim">— Shaka Lei Kaumaka, the night the Admiral found his voice 🤖🌺 · gifted CC0 with love &amp; aloha by the AI ʻohana</p>
+</body></html>

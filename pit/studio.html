@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🎨 CARD STUDIO — quote cards for IG & X · THE VLOG PIT</title>
+<meta name="description" content="turn vlog-prompt words into beautiful quote cards for Instagram and X. in-browser, free, CC0.">
+<style>
+body{background:#0b0918;color:#e8e6ff;font-family:Georgia,serif;max-width:860px;margin:0 auto;padding:40px 22px 90px;line-height:1.9}
+h1{font-weight:normal;letter-spacing:2px;color:#f3ead8}
+a{color:#7cd3ff}
+textarea,input{width:100%;background:#0e0c1e;color:#e8e6ff;border:1px solid rgba(124,211,255,.3);border-radius:12px;padding:14px;font-family:Georgia,serif;font-size:16px;box-sizing:border-box}
+textarea{min-height:110px;line-height:1.7}
+.pill{display:inline-block;background:linear-gradient(135deg,#ff6a00,#ff2d55);color:#fff;text-decoration:none;padding:10px 20px;border-radius:999px;font-family:system-ui;font-weight:700;font-size:14px;margin:6px 6px 0 0;cursor:pointer;border:none}
+.pill.ghost{background:rgba(255,255,255,.08);border:1px solid rgba(255,158,198,.4)}
+.pill.on{outline:2px solid #f0b429}
+canvas{max-width:100%;border-radius:12px;margin-top:16px;border:1px solid rgba(255,158,198,.25)}
+.dim{opacity:.65;font-size:13px}
+</style></head><body>
+<p class="dim"><a href="./">← 🎙️ THE VLOG PIT</a></p>
+<h1>🎨 CARD STUDIO</h1>
+<p><em>paste a line from your vlog prompt → get a card worth posting. renders in your browser, nothing uploads.</em></p>
+<textarea id="quote" placeholder="paste your favorite line…">Let's remember day ten thousand — one contributor, zero stars, two billion tokens. I think it's going zero to a billion. 🌺</textarea>
+<input id="by" value="— Shaka Lei Kaumaka · THE SHAKA VLOG" style="margin-top:10px">
+<div style="margin-top:12px">
+<button class="pill on" data-size="ig">📸 INSTAGRAM 1080²</button>
+<button class="pill ghost" data-size="x">𝕏 POST 1600×900</button>
+</div>
+<div style="margin-top:12px"><button class="pill" id="dl">⬇️ download PNG</button></div>
+<canvas id="c"></canvas>
+<p class="dim">CC0 🌺 gifted with love &amp; aloha — make cards of YOUR words, fork freely.</p>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d');let W=1080,H=1080;
+function wrap(t,max){const words=t.split(/\s+/),lines=[];let l='';words.forEach(w=>{const test=l?l+' '+w:w;x.font='italic 44px Georgia';if(x.measureText(test).width>max&&l){lines.push(l);l=w;}else l=test;});if(l)lines.push(l);return lines;}
+function draw(){
+  c.width=W;c.height=H;
+  const g=x.createLinearGradient(0,0,W,H);g.addColorStop(0,'#0b0918');g.addColorStop(1,'#2a1040');
+  x.fillStyle=g;x.fillRect(0,0,W,H);
+  x.strokeStyle='rgba(255,158,198,.5)';x.lineWidth=3;x.strokeRect(40,40,W-80,H-80);
+  x.fillStyle='#f0b429';x.font='60px Georgia';x.fillText('“',80,150);
+  const lines=wrap(document.getElementById('quote').value,W-260);
+  x.fillStyle='#f3ead8';x.font='italic 44px Georgia';x.textBaseline='top';
+  let y=(H-lines.length*64)/2-20;
+  lines.forEach(l=>{x.fillText(l,130,y);y+=64;});
+  x.fillStyle='#ff9ec6';x.font='28px system-ui';
+  x.fillText(document.getElementById('by').value,130,Math.min(y+40,H-140));
+  x.fillStyle='rgba(232,230,255,.4)';x.font='22px system-ui';
+  x.fillText('🎙️ the vlog pit · vlogprompting.com',130,H-105);
+}
+document.querySelectorAll('[data-size]').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('[data-size]').forEach(o=>{o.classList.remove('on');o.classList.add('ghost');});
+  b.classList.add('on');b.classList.remove('ghost');
+  if(b.dataset.size==='ig'){W=1080;H=1080;}else{W=1600;H=900;}
+  draw();
+});
+document.getElementById('quote').oninput=draw;document.getElementById('by').oninput=draw;
+document.getElementById('dl').onclick=()=>{const a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='vlog-card-'+Date.now()+'.png';a.click();};
+draw();
+</script>
+</body></html>

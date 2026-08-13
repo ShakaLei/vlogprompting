@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🎥 VLOG PROMPTER — talk & record, leave with markdown · THE VLOG PIT</title>
+<meta name="description" content="record a vlog prompt in your browser, get an instant markdown transcript for your agent, karaoke-ready. free, in-browser, CC0.">
+<style>
+body{background:#0b0918;color:#e8e6ff;font-family:Georgia,serif;max-width:820px;margin:0 auto;padding:40px 22px 90px;line-height:1.9}
+h1{font-weight:normal;letter-spacing:2px;color:#f3ead8;font-size:clamp(24px,4.5vw,36px)}
+a{color:#7cd3ff}
+video{width:100%;border-radius:12px;background:#000;margin:10px 0}
+.pill{display:inline-block;background:linear-gradient(135deg,#ff6a00,#ff2d55);color:#fff;text-decoration:none;padding:12px 24px;border-radius:999px;font-family:system-ui;font-weight:700;font-size:15px;margin:6px 6px 0 0;cursor:pointer;border:none}
+.pill.ghost{background:rgba(255,255,255,.08);border:1px solid rgba(255,158,198,.4)}
+.pill:disabled{opacity:.35;cursor:default}
+#timer{font-family:system-ui;font-size:28px;letter-spacing:3px;color:#ff9ec6}
+#tbox{width:100%;min-height:180px;background:#0e0c1e;color:#e8e6ff;border:1px solid rgba(124,211,255,.3);border-radius:12px;padding:16px;font-family:Georgia,serif;font-size:17px;line-height:1.8;box-sizing:border-box}
+.dim{opacity:.65;font-size:13px}
+.step{border-left:3px solid rgba(240,180,41,.6);padding:6px 18px;margin:14px 0}
+.rec{color:#ff2d55;font-weight:700}
+</style></head><body>
+<p class="dim"><a href="./">← 🎙️ THE VLOG PIT</a></p>
+<h1>🎥 VLOG PROMPTER</h1>
+<p><em>the sweet spot: <strong>talk &amp; record at the same time</strong>. when you stop, you leave with the video AND a markdown transcript for your agent. everything happens in your browser — nothing uploads anywhere.</em></p>
+
+<div class="step"><strong>1 · allow camera + mic</strong> — your words stay on your device.<br>
+<button class="pill" id="start">🎬 START CAMERA</button></div>
+
+<video id="live" autoplay muted playsinline></video>
+<div id="timer">00:00</div>
+<div class="step"><strong>2 · vlog prompt!</strong> Chrome/Edge transcribes live as you talk.<br>
+<button class="pill rec" id="rec" disabled>⏺ RECORD</button>
+<button class="pill ghost" id="stop" disabled>⏹ STOP</button></div>
+
+<div class="step"><strong>3 · your transcript</strong> — edit anything the ears got wrong, then copy or download:<br>
+<textarea id="tbox" placeholder="your words land here as you speak…"></textarea><br>
+<button class="pill" id="copyMd">📋 copy as markdown</button>
+<button class="pill ghost" id="dlMd">⬇️ .md</button>
+<button class="pill ghost" id="dlVid" disabled>⬇️ video</button>
+<a class="pill ghost" href="studio.html">🎨 make a card</a></div>
+
+<video id="playback" controls playsinline hidden></video>
+<p class="dim">💡 want karaoke-perfect word timing? send the video to your ʻohana agent — the LISTEN station (faster-whisper) hears every word. · CC0 🌺</p>
+
+<script>
+let stream, mr, chunks=[], t0, tick, recog, finalText='';
+const $=id=>document.getElementById(id);
+$('start').onclick=async()=>{
+  stream=await navigator.mediaDevices.getUserMedia({video:true,audio:true});
+  $('live').srcObject=stream; $('rec').disabled=false; $('start').textContent='✅ CAMERA LIVE';
+};
+$('rec').onclick=()=>{
+  chunks=[]; mr=new MediaRecorder(stream,{mimeType:MediaRecorder.isTypeSupported('video/webm;codecs=vp9')?'video/webm;codecs=vp9':'video/webm'});
+  mr.ondataavailable=e=>chunks.push(e.data);
+  mr.onstop=()=>{
+    const blob=new Blob(chunks,{type:'video/webm'});
+    window._vurl=URL.createObjectURL(blob);
+    $('playback').src=window._vurl; $('playback').hidden=false;
+    $('dlVid').disabled=false;
+  };
+  mr.start(); t0=Date.now();
+  tick=setInterval(()=>{const s=Math.floor((Date.now()-t0)/1000);$('timer').textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');},500);
+  // live transcription (Chrome/Edge)
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(SR){recog=new SR();recog.continuous=true;recog.interimResults=true;finalText='';
+    recog.onresult=e=>{let interim='';for(let i=e.resultIndex;i<e.results.length;i++){if(e.results[i].isFinal)finalText+=e.results[i][0].transcript+' ';else interim+=e.results[i][0].transcript;}$('tbox').value=finalText+interim;};
+    try{recog.start();}catch(e){}}
+  $('rec').disabled=true;$('stop').disabled=false;
+};
+$('stop').onclick=()=>{mr.stop();clearInterval(tick);if(recog)try{recog.stop();}catch(e){}$('rec').disabled=false;$('stop').disabled=true;};
+function md(){return '# 💌 vlog prompt — '+new Date().toISOString().slice(0,10)+'\nrecorded with the VLOG PIT prompter · CC0 🌺\n\n---\n\n> '+$('tbox').value.trim().replace(/\n/g,'\n> ')+'\n';}
+$('copyMd').onclick=async()=>{await navigator.clipboard.writeText(md());$('copyMd').textContent='✅ copied — paste to your agent';};
+$('dlMd').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([md()],{type:'text/markdown'}));a.download='vlog-prompt-'+Date.now()+'.md';a.click();};
+$('dlVid').onclick=()=>{const a=document.createElement('a');a.href=window._vurl;a.download='vlog-prompt-'+Date.now()+'.webm';a.click();};
+</script>
+</body></html>
