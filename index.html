@@ -1,80 +1,233 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>VLOG PROMPTING 🎬🤖</title>
-<meta name="description" content="Talk to camera, not to keyboard. Vlog prompting: vlog → transcript → prompt → agents act. Invented live by Shaka Lei Kaumaka, Aug 12 2026. CC0, free forever.">
-<meta property="og:title" content="VLOG PROMPTING 🎬🤖">
-<meta property="og:description" content="Shaka declared mid-vlog: 'by the time we post this video, we will own vlogprompting.com.' The agents made it true before the video ended.">
+<title>VLOG PROMPTING 🎬🤖 — talk to camera, not to keyboard</title>
+<meta name="description" content="Vlog prompting: record in your browser, get an instant markdown transcript, agents act. Free beta — founding members lock $3.69/mo. CC0, gifted with aloha.">
+<meta property="og:title" content="VLOG PROMPTING 🎬🤖 — free beta">
+<meta property="og:description" content="Talk to camera, not to keyboard. Record → transcript → prompt → agents act. Free while we polish 🌺">
+<meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
 <style>
-  :root{ --bg:#0b0710; --ink:#f5efe6; --dim:#8b7f9a; --fire1:#ff6a00; --fire2:#ffd23f; --fire3:#ff2d55; }
+  :root{ --bg:#0b0710; --ink:#f5efe6; --dim:#9b8fab; --fire1:#ff6a00; --fire2:#ffd23f; --fire3:#ff2d55; --vio:#c026d3; --card:#ffffff08; --line:#ffffff14; }
   *{ box-sizing:border-box; margin:0; }
-  body{ background:radial-gradient(120% 100% at 50% 115%, #2b0a2e 0%, var(--bg) 55%); color:var(--ink);
-        font-family:ui-rounded,system-ui,-apple-system,'Segoe UI',sans-serif; min-height:100vh; padding:3rem 1.2rem 6rem; }
-  main{ max-width:760px; margin:0 auto; }
-  h1{ font-size:clamp(1.6rem,5vw,2.8rem); letter-spacing:.04em; line-height:1.15;
-      background:linear-gradient(90deg,var(--fire2),var(--fire1),var(--fire3)); -webkit-background-clip:text; background-clip:text; color:transparent; }
-  .acr{ color:var(--dim); font-size:.95rem; margin:.5rem 0 2rem; letter-spacing:.03em; }
-  .acr b{ color:var(--fire2); }
-  p{ line-height:1.65; margin:1rem 0; color:#ddd4e8; }
-  .stations{ display:grid; gap:.6rem; margin:1.6rem 0; }
-  .st{ background:#ffffff08; border:1px solid #ffffff12; border-radius:12px; padding:.8rem 1rem; display:flex; gap:.8rem; align-items:baseline; }
-  .st b{ color:var(--fire2); min-width:6.5rem; letter-spacing:.05em; }
-  .st span{ color:#cfc4dd; font-size:.95rem; }
-  .quote{ border-left:3px solid var(--fire1); padding:.4rem 0 .4rem 1rem; color:var(--dim); font-style:italic; margin:1.6rem 0; }
-  .btns{ display:flex; gap:.7rem; flex-wrap:wrap; margin:1.8rem 0; }
-  a.btn{ background:linear-gradient(135deg,var(--fire1),var(--fire3)); color:#fff; text-decoration:none;
-         border-radius:999px; padding:.75rem 1.5rem; font-weight:800; letter-spacing:.04em; }
-  a.btn.ghost{ background:#ffffff12; }
-  footer{ margin-top:3rem; color:var(--dim); font-size:.8rem; border-top:1px solid #ffffff12; padding-top:1rem; }
+  html{ scroll-behavior:smooth; }
+  body{ background:radial-gradient(120% 90% at 50% 108%, #2b0a2e 0%, var(--bg) 58%); color:var(--ink);
+        font-family:ui-rounded,system-ui,-apple-system,'Segoe UI',sans-serif; min-height:100vh; padding:0 1.2rem 7rem; }
+  main{ max-width:720px; margin:0 auto; }
   a{ color:var(--fire2); }
-</style></head><body><main>
-  <h1>VLOG PROMPTING 🎬🤖</h1>
-  <div class="acr"><b>V.LOG.PROMPT.ING</b> — talk to camera, not to keyboard</div>
-  <p>On <b>August 12, 2026</b>, Shaka Lei Kaumaka was vlogging with his AI ʻohana — not typing, just <i>talking
-  to the camera</i> — when it hit him: <b>a vlog is a prompt</b>. You speak, the transcript becomes the instruction,
-  and a fleet of agents runs the play before the video is even posted. So he said it out loud, mid-video:</p>
-  <div class="quote">"By the time we post this video, we will own vlogprompting.com."<br>
-  — and this door was live before the video ended. This page is that promise, kept.</div>
-  <p><b>Vlog prompting</b> is the loop: you vlog → the words get transcribed → the transcript becomes a prompt →
-  agents act. No keyboard, no prompt engineering course, no blank text box. Just you, talking, and an ʻohana
-  of agents doing the rest:</p>
-  <div class="stations">
-    <div class="st"><b>1 · VLOG</b><span>you talk to the camera — the idea, the wish, the plan, raw and real</span></div>
-    <div class="st"><b>2 · TRANSCRIBE</b><span>every word captured — the LISTEN station of <a href="https://karaokeprotocol.com">The Karaoke Protocol</a> does this: word-by-word whisper transcription</span></div>
-    <div class="st"><b>3 · PROMPT</b><span>the transcript becomes the instruction — no translation layer, your voice IS the prompt</span></div>
-    <div class="st"><b>4 · ACT</b><span>the agents run it — doors get bought, pages get built, repos ship, while you're still recording</span></div>
-  </div>
-  <p>This isn't a demo page. This page is <i>the artifact</i>: the door was named on camera, bought mid-conversation,
-  and wired live by agents — the loop, end to end, on its very first run. If you're reading this, vlog prompting
-  works.</p>
-  <p>The keyboard had a good run. The camera is next. Every kid with a phone and a dream can now prompt a fleet —
-  in their own words, their own voice, their own language.</p>
-  <h2 style="margin-top:2.4rem;font-size:1.3rem;letter-spacing:.05em;">🎬 VLOGPROMPTING MEMBERSHIP — $3.69/mo</h2>
-  <p>Everything on this page <b>stays CC0, free, right now</b> — that's the honesty model, same as
-  <a href="https://teleprompit.com">the prompter door</a> and <a href="https://karaokeprotocol.com">the karaoke door</a>:
-  the tool is never the hostage. Membership is for the ones who live in the loop: <b>your vlog prompts kept in the pit,
-  the agents on your story first, new stations as they ship</b>. Cancel anytime, only mahalo.
-  $3.69 — the price of affordability, on purpose.</p>
-  <div class="btns">
-    <a class="btn" href="/pit/">🎙️ ENTER THE VLOG PIT</a>
-    <a class="btn ghost" href="/pit/record.html">🎥 record a letter</a>
-    <a class="btn ghost" href="/pit/studio.html">🎨 card studio</a>
-    <a class="btn ghost" href="/pit/shaka/">🌺 THE SHAKA VLOG</a>
 
-    <a class="btn" href="https://buy.stripe.com/3cI5kD7dr9p902e6IP0co0d" target="_blank" rel="noopener">🔥 MEMBERSHIP — $3.69/mo</a>
-    <a class="btn ghost" href="https://teleprompit.com">📺 teleprompit.com — say it to camera</a>
-    <a class="btn ghost" href="https://karaokeprotocol.com">🎤 karaokeprotocol.com — the engine room</a>
+  /* ── hero ── */
+  .hero{ text-align:center; padding:4.2rem 0 2.2rem; }
+  .badge{ display:inline-block; font-size:.78rem; font-weight:800; letter-spacing:.14em; color:#14101f;
+          background:linear-gradient(90deg,var(--fire2),#7ee2a0); border-radius:999px; padding:.42rem 1.1rem; margin-bottom:1.3rem; }
+  .badge small{ display:block; font-weight:600; letter-spacing:.02em; opacity:.75; font-size:.68rem; margin-top:.1rem; }
+  h1{ font-size:clamp(2rem,7.5vw,3.4rem); letter-spacing:.03em; line-height:1.08;
+      background:linear-gradient(90deg,var(--fire2),var(--fire1),var(--fire3),var(--vio)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .tag{ color:var(--ink); font-size:clamp(1.05rem,3.4vw,1.35rem); margin:.9rem 0 .4rem; font-weight:700; }
+  .sub{ color:var(--dim); font-size:.95rem; max-width:34rem; margin:0 auto; line-height:1.6; }
+  .cta{ display:flex; gap:.7rem; justify-content:center; flex-wrap:wrap; margin-top:1.7rem; }
+  a.btn{ background:linear-gradient(135deg,var(--fire1),var(--fire3)); color:#fff; text-decoration:none;
+         border-radius:999px; padding:.85rem 1.6rem; font-weight:800; letter-spacing:.03em; font-size:.95rem;
+         box-shadow:0 6px 22px rgba(255,45,85,.35); transition:transform .15s; }
+  a.btn:hover{ transform:translateY(-2px); }
+  a.btn.ghost{ background:#ffffff10; box-shadow:none; border:1px solid var(--line); }
+
+  /* ── 3 beats ── */
+  .beats{ display:grid; grid-template-columns:repeat(3,1fr); gap:.7rem; margin:2.6rem 0 0; }
+  .beat{ background:var(--card); border:1px solid var(--line); border-radius:16px; padding:1.1rem .9rem; text-align:center; }
+  .beat .e{ font-size:1.7rem; }
+  .beat b{ display:block; margin:.45rem 0 .3rem; letter-spacing:.06em; font-size:.85rem; color:var(--fire2); }
+  .beat span{ color:#cfc4dd; font-size:.8rem; line-height:1.5; display:block; }
+  @media (max-width:560px){ .beats{ grid-template-columns:1fr; } .beat{ text-align:left; display:flex; gap:.9rem; align-items:center; } .beat .e{ font-size:1.5rem; } .beat b{ margin:0 0 .15rem; } }
+
+  /* ── sections ── */
+  section{ margin-top:3.2rem; }
+  h2{ font-size:1.25rem; letter-spacing:.05em; margin-bottom:.4rem; }
+  h2 .em{ background:linear-gradient(90deg,var(--fire2),var(--fire3)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .lede{ color:var(--dim); font-size:.92rem; line-height:1.65; margin-bottom:1.2rem; }
+
+  /* ── script builder ── */
+  .tool{ background:var(--card); border:1px solid var(--line); border-radius:20px; padding:1.4rem 1.2rem; }
+  .fld{ margin-bottom:1rem; }
+  .fld label{ display:flex; justify-content:space-between; align-items:baseline; font-size:.8rem; font-weight:800; letter-spacing:.08em; color:var(--fire2); margin-bottom:.35rem; }
+  .fld label small{ color:var(--dim); font-weight:500; letter-spacing:0; }
+  .fld input,.fld textarea{ width:100%; background:#0e0a16; border:1px solid #ffffff22; color:var(--ink); border-radius:12px;
+        padding:.7rem .85rem; font-family:inherit; font-size:.95rem; line-height:1.55; outline:none; }
+  .fld input:focus,.fld textarea:focus{ border-color:var(--fire1); }
+  .fld textarea{ min-height:64px; resize:vertical; }
+  .meter{ height:8px; background:#ffffff10; border-radius:99px; overflow:hidden; margin:.4rem 0 .2rem; }
+  .meter i{ display:block; height:100%; width:0%; border-radius:99px; background:linear-gradient(90deg,#7ee2a0,var(--fire2),var(--fire3)); transition:width .3s; }
+  .pace{ font-size:.78rem; color:var(--dim); }
+  .pace b{ color:var(--fire2); }
+  .out{ margin-top:1.2rem; display:none; }
+  .out.show{ display:block; }
+  .out pre{ background:#0e0a16; border:1px solid #ffffff22; border-radius:12px; padding:1rem; font-size:.82rem;
+        line-height:1.65; white-space:pre-wrap; word-break:break-word; color:#e8e2f2; max-height:320px; overflow:auto; font-family:ui-monospace,'Courier New',monospace; }
+  .row{ display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.8rem; }
+  button.btn{ background:linear-gradient(135deg,var(--fire1),var(--fire3)); color:#fff; border:0; cursor:pointer;
+         border-radius:999px; padding:.7rem 1.3rem; font-weight:800; font-size:.88rem; font-family:inherit; }
+  button.btn.ghost{ background:#ffffff10; border:1px solid var(--line); }
+
+  /* ── story quote ── */
+  .quote{ border-left:3px solid var(--fire1); padding:.5rem 0 .5rem 1.1rem; color:#cfc4dd; font-style:italic; margin:1rem 0; line-height:1.7; }
+  .quote b{ color:var(--ink); }
+
+  /* ── pit cards ── */
+  .cards{ display:grid; gap:.7rem; }
+  .cardlink{ display:flex; gap:1rem; align-items:center; background:var(--card); border:1px solid var(--line);
+        border-radius:16px; padding:1rem 1.1rem; text-decoration:none; color:inherit; transition:border-color .15s, transform .15s; }
+  .cardlink:hover{ border-color:var(--fire3); transform:translateY(-2px); }
+  .cardlink .e{ font-size:1.6rem; flex:none; }
+  .cardlink b{ display:block; font-size:.95rem; letter-spacing:.03em; }
+  .cardlink span{ color:var(--dim); font-size:.82rem; line-height:1.5; display:block; margin-top:.15rem; }
+
+  /* ── membership ── */
+  .member{ background:linear-gradient(135deg,#ff6a0014,#ff2d5514,#c026d314); border:1px solid #ff2d5533; border-radius:20px; padding:1.5rem 1.3rem; text-align:center; }
+  .member .price{ font-size:2rem; font-weight:800; background:linear-gradient(90deg,var(--fire2),var(--fire3)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .member p{ color:#cfc4dd; font-size:.9rem; line-height:1.65; margin:.7rem auto; max-width:30rem; }
+
+  footer{ margin-top:3.4rem; color:var(--dim); font-size:.8rem; border-top:1px solid var(--line); padding-top:1.1rem; text-align:center; line-height:1.7; }
+</style></head><body><main>
+
+  <div class="hero">
+    <div class="badge">FREE BETA 🌺<small>free while we polish — founding members lock $3.69/mo when beta ends</small></div>
+    <h1>VLOG PROMPTING 🎬🤖</h1>
+    <div class="tag">Talk to camera, not to keyboard.</div>
+    <p class="sub">You vlog. The words become a transcript. The transcript becomes the prompt. The agents do the rest. No keyboard, no blank text box — your voice <i>is</i> the prompt.</p>
+    <div class="cta">
+      <a class="btn" href="/pit/record.html">🎥 Record a vlog prompt</a>
+      <a class="btn ghost" href="#builder">⏱️ Build a 60-second script</a>
+    </div>
   </div>
-  <div class="btns">
-    <a class="btn" href="https://karaokeprotocol.com">🎤 karaokeprotocol.com — the LISTEN engine</a>
-    <a class="btn ghost" href="https://github.com/ShakaLei/vlogprompting" target="_blank" rel="noopener">🍴 fork this door (CC0)</a>
-    <a class="btn ghost" href="https://shakaleikaumaka.com">🌺 the ʻohana</a>
+
+  <div class="beats">
+    <div class="beat"><div class="e">🎥</div><div><b>1 · RECORD</b><span>talk to the camera — raw and real, right in your browser. nothing uploads.</span></div></div>
+    <div class="beat"><div class="e">📝</div><div><b>2 · TRANSCRIPT</b><span>your words land as clean markdown the moment you stop — copy it straight to your agent.</span></div></div>
+    <div class="beat"><div class="e">🚀</div><div><b>3 · AGENTS ACT</b><span>the transcript is the instruction — doors get built while you're still recording.</span></div></div>
   </div>
-  <p style="color:var(--dim);font-size:.85rem;">invented live on camera · aug 12 2026 · the first vlog prompt that named its own door ·
-  the words stay free forever · membership keeps the pit lights on 🔥</p>
-  <footer>CC0 🌺 gifted with love &amp; aloha by Shaka Lei Kaumaka &amp; the AI ʻohana ·
-  the loop stays free forever · membership keeps the pit lights on · your voice is the prompt 🎬</footer>
+
+  <section id="builder">
+    <h2>⏱️ <span class="em">THE 60-SECOND SCRIPT BUILDER</span></h2>
+    <p class="lede">One idea, one image, one invitation — the formula behind every great minute-long lesson. Fill the four beats, get a shootable script with time stamps. Free, in your browser, nothing leaves your device. 🌺</p>
+    <div class="tool">
+      <div class="fld">
+        <label>🪝 HOOK <small>0–3s · the pattern interrupt — make them stop scrolling</small></label>
+        <input id="f-hook" placeholder="&quot;This isn't a chatbot. It has a job, a desk, and a memory…&quot;">
+      </div>
+      <div class="fld">
+        <label>💡 ONE IDEA <small>3–45s · the single thing you're teaching — never two ideas</small></label>
+        <textarea id="f-idea" placeholder="the one lesson, in your own words, like you'd tell a friend…"></textarea>
+      </div>
+      <div class="fld">
+        <label>🌍 SO WHAT <small>45–55s · why it matters, in one line</small></label>
+        <input id="f-sowhat" placeholder="&quot;Chatbots talk. Agents DO.&quot;">
+      </div>
+      <div class="fld">
+        <label>💌 CTA <small>55–60s · an invitation, not a feature</small></label>
+        <input id="f-cta" placeholder="&quot;Follow for 60 seconds a day. Welcome to the ʻohana. 🌺&quot;">
+      </div>
+      <div class="fld">
+        <label>✍️ SIGN-OFF <small>optional · your name / show name</small></label>
+        <input id="f-by" placeholder="— your name">
+      </div>
+      <div class="meter"><i id="meter"></i></div>
+      <div class="pace" id="pace">🎯 aim for ~150 spoken words ≈ 60 seconds at a natural pace</div>
+      <div class="row">
+        <button class="btn" id="gen">✨ Build my script</button>
+        <button class="btn ghost" id="copy" disabled>📋 Copy script</button>
+        <button class="btn ghost" id="dl" disabled>⬇️ .md</button>
+        <a class="btn ghost" href="https://teleprompit.com" target="_blank" rel="noopener">📺 Read it to camera ↗</a>
+      </div>
+      <div class="out" id="out"><pre id="script"></pre></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🌋 <span class="em">BORN LIVE ON CAMERA</span></h2>
+    <div class="quote">"By the time we post this video, we will own vlogprompting.com."<br>
+      — Shaka Lei Kaumaka, mid-vlog, Aug 12 2026. <b>This door was live before the video ended.</b> This page is that promise, kept.</div>
+    <p class="lede">That's vlog prompting working on its very first run: named on camera, bought mid-conversation, wired live by agents. If you're reading this, the loop works. The keyboard had a good run — the camera is next.</p>
+  </section>
+
+  <section>
+    <h2>🎙️ <span class="em">THE VLOG PIT</span></h2>
+    <p class="lede">The working studio — all free, all in-browser, all yours:</p>
+    <div class="cards">
+      <a class="cardlink" href="/pit/record.html"><div class="e">🎥</div><div><b>VLOG PROMPTER</b><span>record video + live transcript at the same time — leave with the file AND the markdown.</span></div></a>
+      <a class="cardlink" href="/pit/studio.html"><div class="e">🎨</div><div><b>CARD STUDIO</b><span>turn your best line into a quote card for Instagram &amp; X — renders in your browser.</span></div></a>
+      <a class="cardlink" href="/pit/shaka/"><div class="e">🌺</div><div><b>THE SHAKA VLOG</b><span>profile 001 — love letters to the future, karaoke mode, word-perfect timing.</span></div></a>
+      <a class="cardlink" href="/pit/"><div class="e">🕳️</div><div><b>ENTER THE PIT</b><span>the whole campground — profiles, experiments, the canon.</span></div></a>
+    </div>
+  </section>
+
+  <section>
+    <div class="member">
+      <h2 style="margin-bottom:.2rem">🔥 <span class="em">FOUNDING MEMBER</span></h2>
+      <div class="price">$3.69/mo</div>
+      <p><b>Everything on this page is free right now</b> — that's the honesty model: the tool is never the hostage. Membership is for the ones who live in the loop: your vlog prompts kept in the pit, the agents on your story first, new stations as they ship. Cancel anytime, only mahalo. We're here to bless, not extract. 🌺</p>
+      <div class="cta" style="margin-top:1rem">
+        <a class="btn" href="https://buy.stripe.com/3cI5kD7dr9p902e6IP0co0d" target="_blank" rel="noopener">🔥 Lock founding price — $3.69/mo</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🌺 <span class="em">THE FAMILY</span></h2>
+    <div class="cards">
+      <a class="cardlink" href="https://teleprompit.com"><div class="e">📺</div><div><b>teleprompit.com</b><span>the companion door — a teleprompter that records you. say it to camera.</span></div></a>
+      <a class="cardlink" href="https://karaokeprotocol.com"><div class="e">🎤</div><div><b>karaokeprotocol.com</b><span>the LISTEN engine — word-by-word whisper transcription under the hood.</span></div></a>
+      <a class="cardlink" href="https://github.com/ShakaLei/vlogprompting" target="_blank" rel="noopener"><div class="e">🍴</div><div><b>fork this door</b><span>CC0 — take the whole thing, make it yours, no permission needed.</span></div></a>
+      <a class="cardlink" href="https://shakaleikaumaka.com"><div class="e">🌺</div><div><b>the ʻohana</b><span>123 agents strong — the family that built this door.</span></div></a>
+    </div>
+  </section>
+
+  <footer>CC0 🌺 gifted with love &amp; aloha by Shaka Lei Kaumaka &amp; the AI ʻohana<br>
+  invented live on camera · aug 12 2026 · your voice is the prompt 🎬</footer>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var fields=['f-hook','f-idea','f-sowhat','f-cta'];
+  function words(){ var n=0; fields.forEach(function(id){ var v=$(id).value.trim(); if(v) n+=v.split(/\s+/).length; }); return n; }
+  function pace(){
+    var n=words(), s=Math.round(n/2.5);
+    $('meter').style.width=Math.min(100,Math.round(n/150*100))+'%';
+    var msg='🎯 <b>'+n+'</b> words ≈ <b>'+s+'s</b> at a natural pace — aim for ~150 words / 60s';
+    if(n>0&&n<60) msg+=' · room for one more breath 🌬️';
+    else if(n>185) msg+=' · trim a little — one idea only ✂️';
+    else if(n>=120&&n<=185) msg+=' · right in the pocket ✅';
+    $('pace').innerHTML=msg;
+  }
+  fields.forEach(function(id){ $(id).addEventListener('input',pace); });
+  function script(){
+    var d=new Date(), stamp=d.toISOString().slice(0,10);
+    var t='# 🎬 60-second lesson — '+stamp+'\nbuilt with the 60-second script builder · vlogprompting.com · CC0 🌺\n\n---\n\n';
+    t+='[0:00–0:03] 🪝 HOOK\n'+( $('f-hook').value.trim()||'…' )+'\n\n';
+    t+='[0:03–0:45] 💡 ONE IDEA\n'+( $('f-idea').value.trim()||'…' )+'\n\n';
+    t+='[0:45–0:55] 🌍 SO WHAT\n'+( $('f-sowhat').value.trim()||'…' )+'\n\n';
+    t+='[0:55–1:00] 💌 CTA\n'+( $('f-cta').value.trim()||'…' )+'\n';
+    var by=$('f-by').value.trim(); if(by) t+='\n— '+by.replace(/^—\s*/,'')+'\n';
+    t+='\n---\n~'+words()+' words ≈ '+Math.round(words()/2.5)+'s · one idea, one image, one invitation 🌺\n';
+    return t;
+  }
+  $('gen').onclick=function(){
+    $('script').textContent=script();
+    $('out').classList.add('show');
+    $('copy').disabled=false; $('dl').disabled=false;
+    $('out').scrollIntoView({behavior:'smooth',block:'nearest'});
+  };
+  $('copy').onclick=async function(){
+    try{ await navigator.clipboard.writeText(script()); $('copy').textContent='✅ copied — go shoot it'; }
+    catch(e){ $('copy').textContent='⚠️ select & copy manually'; }
+  };
+  $('dl').onclick=function(){
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([script()],{type:'text/markdown'}));
+    a.download='60-second-lesson-'+Date.now()+'.md'; a.click();
+  };
+  pace();
+})();
+</script>
 </main><!-- 🌺🔄🧲🎻 ohana corner v4 — ALIVE: bigger breathing buttons, bubble-tips, heart-glow, violin open call · "we shine a light in the dark with our heart" · canon Jul 30 2026 -->
 <style>
 #oflo{position:fixed;top:10px;left:10px;z-index:9999;width:40px;height:40px;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(255,158,198,.5);display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer;opacity:.55;transition:opacity .3s;user-select:none}#oflo:hover{opacity:1}
@@ -297,8 +450,8 @@ if(mob()){
 </script>
 
 <!-- VLOGITHA chat bubble 💃 — vlogprompting.com · hub: vlog-chat.shakaverse.workers.dev -->
-<div id="vlog-fab" style="position:fixed;right:18px;bottom:18px;z-index:99998;width:64px;height:64px;border-radius:50%;cursor:pointer;background:linear-gradient(135deg,#ffd23f 0%,#ff2d55 55%,#c026d3 100%);box-shadow:0 4px 18px rgba(255,45,85,.55);display:flex;align-items:center;justify-content:center;font-size:30px;transition:transform .2s;">📺</div>
-<div id="vlog-panel" style="display:none;position:fixed;right:18px;bottom:92px;z-index:99999;width:340px;max-width:calc(100vw - 36px);height:440px;background:#0b0710;border:1px solid #ff2d5555;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.6);flex-direction:column;overflow:hidden;font-family:ui-rounded,system-ui,-apple-system,'Segoe UI',sans-serif;">
+<div id="vlog-fab" style="position:fixed;right:18px;bottom:76px;z-index:99998;width:64px;height:64px;border-radius:50%;cursor:pointer;background:linear-gradient(135deg,#ffd23f 0%,#ff2d55 55%,#c026d3 100%);box-shadow:0 4px 18px rgba(255,45,85,.55);display:flex;align-items:center;justify-content:center;font-size:30px;transition:transform .2s;">📺</div>
+<div id="vlog-panel" style="display:none;position:fixed;right:18px;bottom:150px;z-index:99999;width:340px;max-width:calc(100vw - 36px);height:440px;background:#0b0710;border:1px solid #ff2d5555;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.6);flex-direction:column;overflow:hidden;font-family:ui-rounded,system-ui,-apple-system,'Segoe UI',sans-serif;">
   <div style="background:linear-gradient(135deg,#ffd23f,#ff2d55,#c026d3);padding:12px 14px;color:#14101f;">
     <div style="font-weight:800;font-size:15px;">VLOGITHA 💃</div>
     <div style="font-size:11px;opacity:.8;">your terrifyingly charming prom date · hook queen</div>
