@@ -489,16 +489,38 @@ if(mob()){
       localStorage.setItem('vlog_greeted','1');
     }
   }
+  /* echo law 2026-11-15: the hub echoes the visitor's own line back through /poll, and send() already drew it — it showed twice.
+     Skip exactly one hub echo per line typed on this page (history from earlier visits still renders). */
+  var echoed = [];
+  function isEcho(m){ if (m.role !== 'visitor') return false; var i = echoed.indexOf(String(m.text || '').trim()); if (i < 0) return false; echoed.splice(i, 1); return true; }
+  var pollCtl = null, lastBeat = Date.now();
+  /* long-poll law 2026-11-15: every hub reads `wait`, never `timeout` — `&timeout=20` made this widget short-poll
+     ~3×/s while open. A real 25 s long-poll answers just as fast (the hub wakes it on reply) at 1/80 of the load. */
   async function poll(){
     if (polling) return; polling = true;
+    var ctl = null, kill = 0;
     try {
-      var r = await fetch(HUB + '/poll?session=' + sess + '&after=' + last + '&timeout=20');
+      try { ctl = new AbortController(); pollCtl = ctl; kill = setTimeout(function(){ try { ctl.abort(); } catch(e) {} }, 32000); } catch(e) { ctl = null; }
+      var r = await fetch(HUB + '/poll?session=' + sess + '&after=' + last + '&wait=25', ctl ? { signal: ctl.signal } : undefined);
       var d = await r.json();
-      (d.messages || []).forEach(function(m){ last = Math.max(last, m.seq); if (m.session === sess) add(m.role, m.name || '', m.text); });
+      lastBeat = Date.now();
+      (d.messages || []).forEach(function(m){ last = Math.max(last, m.seq); if (m.session === sess && !isEcho(m)) add(m.role, m.name || '', m.text); });
     } catch(e) {}
+    if (kill) clearTimeout(kill);
     polling = false;
     if (open) setTimeout(poll, 300); else setTimeout(poll, 8000);
   }
+  /* wake law 2026-10-20 (Shaka: "i have to refresh the screen in order to see the responses") — ported to this
+     door 2026-11-15 (it was cloned before the law): a backgrounded tab freezes its in-flight poll — on mobile the
+     fetch can hang forever, so the loop parks on that await and never re-arms. The fetch now carries a 32s abort
+     timer, and every wake aborts the stuck request so the loop re-arms; a 15s heartbeat does the same if nothing
+     has been heard for 45s. No separate catch-up call: this widget dedupes on the `last` cursor alone. */
+  function kick(){ if (!open) return; try { pollCtl && pollCtl.abort(); } catch(e) {} setTimeout(poll, 0); }
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) kick(); });
+  window.addEventListener('focus', kick);
+  window.addEventListener('online', kick);
+  window.addEventListener('pageshow', kick);
+  setInterval(function(){ if (open && Date.now() - lastBeat > 45000) kick(); }, 15000);
   async function send(){
     var t = inp.value.trim(); if (!t) return; inp.value = '';
     if (!localStorage.getItem('vlog_name')) {
@@ -507,6 +529,7 @@ if(mob()){
       return;
     }
     add('visitor','you',t);
+    echoed.push(t);
     await fetch(HUB + '/send', { method:'POST', headers:{'content-type':'application/json'},
       body: JSON.stringify({ session: sess, name: name, text: t }) });
     setTimeout(poll, 500);
