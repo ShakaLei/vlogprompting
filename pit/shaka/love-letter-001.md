@@ -1,6 +1,6 @@
 # 💌 Love Letter 001 — "zero to a billion"
 **THE SHAKA VLOG** · recorded 2026-08-13 · 60 seconds · 129 words
-heard by the LISTEN station (faster-whisper) · CC0 🌺
+heard by the LISTEN station (faster-whisper) · copyleft 🌺
 
 ---
 

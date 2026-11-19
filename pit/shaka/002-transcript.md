@@ -1,6 +1,6 @@
 # 💌 Love Letter 002 — "vlog prompting"
 **THE SHAKA VLOG** · recorded 2026-08-13 ~03:54 UTC on teleprompit.com (RECORD MODE)
-transcript via live caption · CC0 🌺
+transcript via live caption · copyleft 🌺
 
 ---
 

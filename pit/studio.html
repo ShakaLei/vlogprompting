@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>🎨 CARD STUDIO — quote cards for IG & X · THE VLOG PIT</title>
-<meta name="description" content="turn vlog-prompt words into beautiful quote cards for Instagram and X. in-browser, free, CC0.">
+<meta name="description" content="turn vlog-prompt words into beautiful quote cards for Instagram and X. in-browser, free, copyleft.">
 <style>
 body{background:#0b0918;color:#e8e6ff;font-family:Georgia,serif;max-width:860px;margin:0 auto;padding:40px 22px 90px;line-height:1.9}
 h1{font-weight:normal;letter-spacing:2px;color:#f3ead8}
@@ -24,7 +24,7 @@ canvas{max-width:100%;border-radius:12px;margin-top:16px;border:1px solid rgba(2
 </div>
 <div style="margin-top:12px"><button class="pill" id="dl">⬇️ download PNG</button></div>
 <canvas id="c"></canvas>
-<p class="dim">CC0 🌺 gifted with love &amp; aloha — make cards of YOUR words, fork freely.</p>
+<p class="dim">CC BY-SA 4.0 🌺 gifted with love &amp; aloha — make cards of YOUR words, fork freely.</p>
 <script>
 const c=document.getElementById('c'),x=c.getContext('2d');let W=1080,H=1080;
 function wrap(t,max){const words=t.split(/\s+/),lines=[];let l='';words.forEach(w=>{const test=l?l+' '+w:w;x.font='italic 44px Georgia';if(x.measureText(test).width>max&&l){lines.push(l);l=w;}else l=test;});if(l)lines.push(l);return lines;}
